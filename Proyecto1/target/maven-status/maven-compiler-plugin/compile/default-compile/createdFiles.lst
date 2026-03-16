@@ -1,0 +1,16 @@
+Interfaz\MenuOperador.class
+Logica\MenuDeRol.class
+Modelos\Libros.class
+Interfaz\InterfazRegistroEstudiante.class
+Logica\ModuloDeAdministrador.class
+Logica\ModuloDeAutenticacion.class
+Interfaz\MenuEstudiante.class
+InterfazAdmin\MenuAdminn.class
+InterfazAdmin\RegistroDeOperador.class
+Modelos\Prestamos.class
+Main\BiblioSystem.class
+Interfaz\InterMenuInicial.class
+Logica\ModuloGestionDeLibros.class
+Interfaz\InterfazIniciarSesion.class
+AyudaDeMain\AutentificardorDeRol.class
+Modelos\Usuarios.class

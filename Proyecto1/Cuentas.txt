@@ -1,0 +1,18 @@
+Estudiante, 202502428, Kris, Kristhoper Franklin Ucelo Pirir, Ing. Sistemas
+Estudiante, Rick, Rick, Rick, Agro
+Estudiante, Rick, Rick, Rick, Agro
+Estudiante, Rick, Rick, Rick, Agro
+Estudiante, 001, adas, 001, 001
+Estudiante, 001, adas, 001, 001
+Estudiante, 001, adas, 001, 001
+Estudiante, 001, adas, 001, 001
+Estudiante, 001, adas, 001, 001
+Estudiante, 001, adas, 001, 001
+Estudiante, 001, adas, 001, 001
+Estudiante, 001, adas, 001, 001
+Estudiante, 001, adas, 001, 001
+Estudiante, 001, adas, 001, 001
+Estudiante, 001, adas, 001, 001
+Estudiante, 001, adas, 001, 001
+Estudiante, 001, adas, 001, 001
+Estudiante, 002, 002, 002, 002
