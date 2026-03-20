@@ -99,23 +99,39 @@ public class InterfazIniciarSesion extends javax.swing.JFrame {
     
     switch (QueSoy) {
         case "ADMIN":
-            Bitacora.registrar("LOGIN_EXITOSO", VeUsu, "AUTENTICACION");
+            Auten.usuarioActual = VeUsu;
+            
+            Bitacora.registrar("INICIAR SESION", VeUsu, "AUTENTICACION");
             
             MenuAdminn VenAdminn = new MenuAdminn(this.Auten);
             VenAdminn.setVisible(true);
             this.dispose();
             break;
+            
         case "OPERADOR":
-            MenuOperador VenOpe = new MenuOperador(this.Auten);
+            
+            Auten.usuarioActual = VeUsu;
+            
+            Bitacora.registrar("INICIAR SESION", VeUsu, "AUTENTICACION");
+            
+            MenuOperador VenOpe = new MenuOperador(this.Auten,VeUsu);
             VenOpe.setVisible(true);
             this.dispose();
             break;
+            
         case "ESTUDIANTE":
-            new MenuEstudiante(this.Auten).setVisible(true);
+            
+            Auten.usuarioActual = VeUsu;
+            
+            Bitacora.registrar("INICIAR SESION", VeUsu, "AUTENTICACION");
+            
+            Modelos.Usuarios estudiante = Auten.buscarEstudiantePorCarnet(VeUsu);
+            
+            new MenuEstudiante(this.Auten, estudiante).setVisible(true);
             this.dispose();
             break;
         default:
-            Bitacora.registrar("LOGIN_FALLIDO", VeUsu, "AUTENTICACION");
+            Bitacora.registrar("INICIAR SESION FALLIDO", "DESCONOCIDO", "AUTENTICACION");
             javax.swing.JOptionPane.showMessageDialog(this, "Datos Incorrectos");
             
             IngreUsu.setText("");

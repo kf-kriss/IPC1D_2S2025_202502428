@@ -96,6 +96,9 @@ public class RegistroDePrestamo extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, resultado);
         
         if (resultado.contains("EXITO")) {
+            
+            Bitacora.registrar("REGISTRO_DE_PRESTMAO", Auten.usuarioActual, "CONTROL_DE_PRESTAMOS_Y_DEVOLUCIONES");
+            
             txtCarnet.setText("");
             txtIsbn.setText("");
         }

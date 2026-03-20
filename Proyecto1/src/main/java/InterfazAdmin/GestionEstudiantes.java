@@ -173,6 +173,9 @@ private void listarTodos() {
         String carnet = modelo.getValueAt(fila, 0).toString();
         int confirmar = javax.swing.JOptionPane.showConfirmDialog(this, "¿Eliminar?");
         if (confirmar == 0) {
+            
+            Bitacora.registrar("ELIMINAR_ESTUDIANTE", Auten.usuarioActual, "GESTION_DE_ESTUDIANTES_DE_BIBLIOTECA");
+            
             for (int i = 0; i < Auten.ContadorDeCuentas; i++) {
                 if (Auten.CuentasTotales[i].getUsuarioo().equals(carnet)) {
                     for (int j = i; j < Auten.ContadorDeCuentas - 1; j++) {

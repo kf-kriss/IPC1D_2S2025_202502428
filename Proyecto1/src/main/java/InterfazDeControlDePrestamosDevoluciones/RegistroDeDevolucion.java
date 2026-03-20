@@ -4,6 +4,7 @@
  */
 package InterfazDeControlDePrestamosDevoluciones;
 
+import Logica.Bitacora;
 import Logica.ModuloDeAutenticacion;
 import Modelos.Prestamos;
 import Modelos.Libros;
@@ -180,11 +181,13 @@ public class RegistroDeDevolucion extends javax.swing.JFrame {
             "¿Registrar devolución del préstamo " + prestamoSeleccionado.getCodigoDePrestamo() + "?");
         
         if (confirmar == 0) {
-            // 1. Cambiar estado y fecha
+            
+            Bitacora.registrar("REGISTRO_DE_DEVOLUCION", Auten.usuarioActual, "CONTROL_DE_PRESTAMOS_Y_DEVOLUCIONES");
+
             prestamoSeleccionado.setEstado("DEVUELTO");
             prestamoSeleccionado.setFechaDeDevolucion(LocalDate.now());
             
-            // 2. Actualizar stock del libro
+
             for (int i = 0; i < Auten.ContadorLibros; i++) {
                 Libros libro = Auten.LibrosTotales[i];
                 if (libro.ISBN().equals(prestamoSeleccionado.getIsbnLibro())) {
@@ -193,11 +196,9 @@ public class RegistroDeDevolucion extends javax.swing.JFrame {
                 }
             }
             
-            // 3. Guardar en archivo
             Logica.ModuloPrestamos logica = new Logica.ModuloPrestamos();
             logica.actualizarArchivoCompleto(Auten);
             
-            // 4. Actualizar tabla
             buscarPrestamosActivos();
             prestamoSeleccionado = null;
             

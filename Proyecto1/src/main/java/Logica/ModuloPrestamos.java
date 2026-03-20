@@ -17,6 +17,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.File;
 
+import Logica.Bitacora;
+
 public class ModuloPrestamos {
     
     private String validarReglas(ModuloDeAutenticacion Auten, String carnet, String isbn) {
@@ -25,12 +27,16 @@ public class ModuloPrestamos {
         int idxLibro = mLibros.BuscarLibroG(Auten, isbn);
         
         if (idxLibro == -1) {
+            Bitacora.registrar("OPERACION_ERRONEA", carnet, "PRESTAMOS");
+            
             return "ERROR: El libro con ISBN " + isbn + " no existe.";
+
         }
 
         Libros lib = Auten.LibrosTotales[idxLibro];
 
         if (lib.Disponible() <= 0) {
+            Bitacora.registrar("OPERACION_ERRONEA", carnet, "PRESTAMOS");
             return "ERROR: El libro '" + lib.Titulo() + "' no tiene ejemplares disponibles.";
         }
         
@@ -53,10 +59,12 @@ public class ModuloPrestamos {
 
         
         if (prestamosActivos >= 3) {
+            Bitacora.registrar("OPERACION_ERRONEA", carnet, "PRESTAMOS");
             return "RECHAZADO: El estudiante ya tiene 3 préstamos activos (Límite alcanzado).";
         }
 
         if (tieneVencidos) {
+            Bitacora.registrar("OPERACION_ERRONEA", carnet, "PRESTAMOS");
             return "RECHAZADO: El estudiante tiene préstamos VENCIDOS. Debe regularizar su situación.";
         }
 

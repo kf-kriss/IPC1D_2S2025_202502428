@@ -4,6 +4,7 @@
  */
 package InterfazAdmin;
 
+import Logica.Bitacora;
 import Logica.ModuloDeAutenticacion;
 import Logica.ModuloDeAdministrador;
 
@@ -120,6 +121,9 @@ public class RegistroDeOperador extends javax.swing.JFrame {
     int resultado = logica.RegistroDeOperadorG(this.Auten, u, p, n);
     
     if (resultado == 0) {
+        
+        Bitacora.registrar("CREAR_OPERADOR", "admin", "ADMINISTRADOR");
+        
         javax.swing.JOptionPane.showMessageDialog(this, "Operador registrado con éxito");
         
         txtUser.setText("");

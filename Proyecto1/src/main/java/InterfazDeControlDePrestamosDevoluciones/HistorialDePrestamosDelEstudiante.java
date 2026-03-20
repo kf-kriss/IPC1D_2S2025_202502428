@@ -121,7 +121,7 @@ public class HistorialDePrestamosDelEstudiante extends javax.swing.JFrame {
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
 
-        new MenuEstudiante(this.Auten).setVisible(true);
+        new MenuEstudiante(this.Auten, estudianteActual).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
 

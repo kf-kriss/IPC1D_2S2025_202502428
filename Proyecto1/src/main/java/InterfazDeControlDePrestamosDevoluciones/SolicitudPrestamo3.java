@@ -4,9 +4,9 @@
  */
 package InterfazDeControlDePrestamosDevoluciones;
 
-import Logica.ModuloDeAutenticacion;
-import Modelos.Usuarios;
-import Interfaz.MenuEstudiante;
+import Logica.*;
+import Modelos.*;
+import Interfaz.*;
 
 import javax.swing.JOptionPane;
 import java.io.*;
@@ -31,32 +31,33 @@ public class SolicitudPrestamo3 extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         Solicitar = new javax.swing.JButton();
         Regresar = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txtCodIsbn = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("Ingrese Código o ISBN");
 
         Solicitar.setText("Solicitar");
         Solicitar.addActionListener(this::SolicitarActionPerformed);
 
         Regresar.setText("Regresar");
+        Regresar.addActionListener(this::RegresarActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Regresar)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(169, 169, 169)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(Regresar)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(146, 146, 146)
-                            .addComponent(Solicitar)))
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Solicitar))
+                        .addComponent(txtCodIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addComponent(jLabel1)))
                 .addContainerGap(181, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -65,7 +66,7 @@ public class SolicitudPrestamo3 extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addComponent(jLabel1)
                 .addGap(34, 34, 34)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtCodIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(Solicitar)
                 .addGap(50, 50, 50)
@@ -77,13 +78,59 @@ public class SolicitudPrestamo3 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SolicitarActionPerformed
+        String valor = txtCodIsbn.getText().trim();
+        if (valor.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese código o ISBN");
+            return;
+        }
 
+        // Buscar libro
+        String isbnEncontrado = null;
+        for (int i = 0; i < Auten.ContadorLibros; i++) {
+            if (Auten.LibrosTotales[i].ISBN().equals(valor) || 
+                String.valueOf(Auten.LibrosTotales[i].Codigo()).equals(valor)) {
+                isbnEncontrado = Auten.LibrosTotales[i].ISBN();
+                break;
+            }
+        }
+
+        if (isbnEncontrado == null) {
+            JOptionPane.showMessageDialog(this, "Libro no encontrado");
+            return;
+        }
+
+        // ✅ Crear resultado AQUÍ
+        Logica.ModuloPrestamos logica = new Logica.ModuloPrestamos();
+        String resultado = logica.solicitarPrestamoEstudiante(Auten, estudianteActual.getUsuarioo(), isbnEncontrado);
+
+        if (resultado.contains("EXITO")) {
+            String codigo = resultado.replace("EXITO: Código ", "");
+            for (int i = 0; i < Auten.ContadorPrestamos; i++) {
+                if (Auten.PrestamosTotales[i].getCodigoDePrestamo().equals(codigo)) {
+                    JOptionPane.showMessageDialog(this, 
+                        "Préstamo exitoso\n" +
+                        "Código: " + codigo + "\n" +
+                        "Fecha límite: " + Auten.PrestamosTotales[i].getFechaLimite());
+                    break;
+                }
+            }
+            txtCodIsbn.setText("");
+        } else {
+            JOptionPane.showMessageDialog(this, resultado);
+        }
+    
     }//GEN-LAST:event_SolicitarActionPerformed
+
+    private void RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarActionPerformed
+
+        new MenuEstudiante(this.Auten, estudianteActual).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_RegresarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Regresar;
     private javax.swing.JButton Solicitar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtCodIsbn;
     // End of variables declaration//GEN-END:variables
 }

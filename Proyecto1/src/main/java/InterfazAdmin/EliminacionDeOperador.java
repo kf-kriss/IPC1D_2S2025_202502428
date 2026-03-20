@@ -4,6 +4,7 @@
  */
 package InterfazAdmin;
 
+import Logica.Bitacora;
 import Logica.ModuloDeAutenticacion;
 import Logica.ModuloDeAdministrador;
 
@@ -88,6 +89,8 @@ public class EliminacionDeOperador extends javax.swing.JFrame {
         boolean exito = logica.EliminacionDeOperador(this.Auten, usuario);
 
         if (exito) {
+            Bitacora.registrar("ELIMINAR_OPERADOR", Auten.usuarioActual, "ADMINISTRADOR");
+            
             javax.swing.JOptionPane.showMessageDialog(this, "Eliminado");
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "No encontrado");

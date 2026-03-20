@@ -37,6 +37,7 @@ public class ModuloDeAutenticacion {
     
     private final String Cuentastx = "cuentas.txt";
     
+    public String usuarioActual;
     
     public void CargarCuentasDesdeCuentastx(){
         File Archivo = new File(Cuentastx);

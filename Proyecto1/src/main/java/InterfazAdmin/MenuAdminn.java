@@ -4,8 +4,11 @@
  */
 package InterfazAdmin;
 
+import Interfaz.*;
+import Logica.Bitacora;
 import Logica.ModuloDeAutenticacion;
 import InterfazDeControlDePrestamosDevoluciones.*;
+import ModuloGestionDeLibross.ModuloDeGestionDeLibrosss;
 
 public class MenuAdminn extends javax.swing.JFrame {
     
@@ -30,6 +33,9 @@ public class MenuAdminn extends javax.swing.JFrame {
         btnListar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         btnGestionEstudiantes = new javax.swing.JButton();
+        tbnCerrar = new javax.swing.JButton();
+        btnReporte = new javax.swing.JButton();
+        btnMLibros = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,6 +92,15 @@ public class MenuAdminn extends javax.swing.JFrame {
         btnGestionEstudiantes.setText("Ir");
         btnGestionEstudiantes.addActionListener(this::btnGestionEstudiantesActionPerformed);
 
+        tbnCerrar.setText("Cerrar Sesión");
+        tbnCerrar.addActionListener(this::tbnCerrarActionPerformed);
+
+        btnReporte.setText("Reportes");
+        btnReporte.addActionListener(this::btnReporteActionPerformed);
+
+        btnMLibros.setText("Modulo Gestion de Libros");
+        btnMLibros.addActionListener(this::btnMLibrosActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -96,17 +111,28 @@ public class MenuAdminn extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(44, 44, 44)
+                                .addGap(60, 60, 60)
                                 .addComponent(btnDevolver)
-                                .addGap(30, 30, 30)
+                                .addGap(48, 48, 48)
                                 .addComponent(btnListar))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(23, 23, 23)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnGestionEstudiantes)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(82, 82, 82)
+                                        .addComponent(btnGestionEstudiantes)
+                                        .addGap(0, 82, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(tbnCerrar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btnReporte, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(btnMLibros)
+                                                .addGap(34, 34, 34)))))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -123,7 +149,13 @@ public class MenuAdminn extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(btnGestionEstudiantes))
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addComponent(btnMLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tbnCerrar)
+                    .addComponent(btnReporte))
+                .addContainerGap())
         );
 
         pack();
@@ -176,6 +208,27 @@ public class MenuAdminn extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnGestionEstudiantesActionPerformed
 
+    private void tbnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbnCerrarActionPerformed
+    
+        Bitacora.registrar("CERRAR SESION", "ADMIN", "AUTENTICACION");
+        
+        Interfaz.InterfazIniciarSesion login = new Interfaz.InterfazIniciarSesion(this.Auten);
+    
+        login.setVisible(true);
+    
+        this.dispose();
+    }//GEN-LAST:event_tbnCerrarActionPerformed
+
+    private void btnReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteActionPerformed
+        new VentanaReportes(Auten).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnReporteActionPerformed
+
+    private void btnMLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMLibrosActionPerformed
+        new ModuloGestionDeLibross.ModuloDeGestionDeLibrosss(Auten, Auten.usuarioActual).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnMLibrosActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton EliminarOp;
     private javax.swing.JButton ListadoOp;
@@ -183,8 +236,11 @@ public class MenuAdminn extends javax.swing.JFrame {
     private javax.swing.JButton btnDevolver;
     private javax.swing.JButton btnGestionEstudiantes;
     private javax.swing.JButton btnListar;
+    private javax.swing.JButton btnMLibros;
+    private javax.swing.JButton btnReporte;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton tbnCerrar;
     // End of variables declaration//GEN-END:variables
 }

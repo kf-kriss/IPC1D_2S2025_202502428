@@ -1,6 +1,7 @@
 Logica\Bitacora.class
 Logica\ModuloDeAdministrador.class
 InterfazDeControlDePrestamosDevoluciones\HistorialDePrestamosDelEstudiante.class
+Logica\GeneradorReportes.class
 Logica\ModuloDeAutenticacion.class
 Interfaz\MenuEstudiante.class
 Modelos\NodoPrestamo.class
@@ -10,6 +11,7 @@ InterfazDeControlDePrestamosDevoluciones\RegistroDePrestamo.class
 Main\BiblioSystem.class
 Interfaz\InterMenuInicial.class
 Logica\ModuloGestionDeLibros.class
+InterfazAdmin\GestionEstudiantes.class
 InterfazAdmin\ListadoDeOperadores.class
 Interfaz\InterfazIniciarSesion.class
 InterfazAdmin\EliminacionDeOperador.class
@@ -17,6 +19,7 @@ Modelos\Usuarios.class
 InterfazDeControlDePrestamosDevoluciones\MenuDeControDePrestamosYDevoluciones.class
 Modelos\Libros.class
 Interfaz\InterfazRegistroEstudiante.class
+Interfaz\VerDatosEstudiante.class
 InterfazDeControlDePrestamosDevoluciones\ListadoDePrestamosActivos.class
 InterfazDeControlDePrestamosDevoluciones\SolicitudPrestamo3.class
 InterfazDeControlDePrestamosDevoluciones\ListadoDePrestamosActivos$2.class
@@ -26,4 +29,5 @@ ModuloGestionDeLibross\ModuloDeGestionDeLibrosss.class
 InterfazDeControlDePrestamosDevoluciones\ListadoDePrestamosActivos$1.class
 Logica\ModuloPrestamos.class
 InterfazDeControlDePrestamosDevoluciones\RegistroDeDevolucion$1.class
+Interfaz\VentanaReportes.class
 InterfazDeControlDePrestamosDevoluciones\RegistroDeDevolucion.class

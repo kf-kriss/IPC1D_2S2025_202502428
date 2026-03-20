@@ -3,7 +3,10 @@ C:\Users\kfuce\Documents\NetBeansProjects\BiblioSystem\Proyecto1\src\main\java\I
 C:\Users\kfuce\Documents\NetBeansProjects\BiblioSystem\Proyecto1\src\main\java\Interfaz\InterfazRegistroEstudiante.java
 C:\Users\kfuce\Documents\NetBeansProjects\BiblioSystem\Proyecto1\src\main\java\Interfaz\InterMenuInicial.java
 C:\Users\kfuce\Documents\NetBeansProjects\BiblioSystem\Proyecto1\src\main\java\Interfaz\MenuEstudiante.java
+C:\Users\kfuce\Documents\NetBeansProjects\BiblioSystem\Proyecto1\src\main\java\Interfaz\VentanaReportes.java
+C:\Users\kfuce\Documents\NetBeansProjects\BiblioSystem\Proyecto1\src\main\java\Interfaz\VerDatosEstudiante.java
 C:\Users\kfuce\Documents\NetBeansProjects\BiblioSystem\Proyecto1\src\main\java\InterfazAdmin\EliminacionDeOperador.java
+C:\Users\kfuce\Documents\NetBeansProjects\BiblioSystem\Proyecto1\src\main\java\InterfazAdmin\GestionEstudiantes.java
 C:\Users\kfuce\Documents\NetBeansProjects\BiblioSystem\Proyecto1\src\main\java\InterfazAdmin\ListadoDeOperadores.java
 C:\Users\kfuce\Documents\NetBeansProjects\BiblioSystem\Proyecto1\src\main\java\InterfazAdmin\MenuAdminn.java
 C:\Users\kfuce\Documents\NetBeansProjects\BiblioSystem\Proyecto1\src\main\java\InterfazAdmin\RegistroDeOperador.java
@@ -14,6 +17,7 @@ C:\Users\kfuce\Documents\NetBeansProjects\BiblioSystem\Proyecto1\src\main\java\I
 C:\Users\kfuce\Documents\NetBeansProjects\BiblioSystem\Proyecto1\src\main\java\InterfazDeControlDePrestamosDevoluciones\RegistroDePrestamo.java
 C:\Users\kfuce\Documents\NetBeansProjects\BiblioSystem\Proyecto1\src\main\java\InterfazDeControlDePrestamosDevoluciones\SolicitudPrestamo3.java
 C:\Users\kfuce\Documents\NetBeansProjects\BiblioSystem\Proyecto1\src\main\java\Logica\Bitacora.java
+C:\Users\kfuce\Documents\NetBeansProjects\BiblioSystem\Proyecto1\src\main\java\Logica\GeneradorReportes.java
 C:\Users\kfuce\Documents\NetBeansProjects\BiblioSystem\Proyecto1\src\main\java\Logica\ModuloDeAdministrador.java
 C:\Users\kfuce\Documents\NetBeansProjects\BiblioSystem\Proyecto1\src\main\java\Logica\ModuloDeAutenticacion.java
 C:\Users\kfuce\Documents\NetBeansProjects\BiblioSystem\Proyecto1\src\main\java\Logica\ModuloGestionDeLibros.java

@@ -131,7 +131,7 @@ public class InterfazRegistroEstudiante extends javax.swing.JFrame {
 
     private void BotonGuardarRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGuardarRegistroActionPerformed
         String GuarCarne = GCarnet.getText();
-        String GuarContra = GContra.getText();
+        String GuarContra = new String(GContra.getPassword());
         String GuarNom = GNom.getText();
         String GuarCarre = GCarrera.getText();
         
@@ -141,7 +141,7 @@ public class InterfazRegistroEstudiante extends javax.swing.JFrame {
         this.Auten.ContadorDeCuentas++;
         this.Auten.EscribirEnCuentastx(Nuevo);
         
-        new MenuEstudiante(this.Auten).setVisible(true);
+        new MenuEstudiante(this.Auten, Nuevo).setVisible(true);
         
     }//GEN-LAST:event_BotonGuardarRegistroActionPerformed
 

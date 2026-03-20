@@ -4,6 +4,7 @@
  */
 package ModuloGestionDeLibross;
 
+import Logica.Bitacora;
 import Modelos.Libros;
 import Logica.ModuloDeAutenticacion;
 import Logica.ModuloGestionDeLibros;
@@ -17,13 +18,16 @@ public class ModuloDeGestionDeLibrosss extends javax.swing.JFrame {
     Logica.ModuloGestionDeLibros logica = new ModuloGestionDeLibros();
     ModuloDeAutenticacion Auten;
     DefaultTableModel modelo;
+    private String usuarioActual;
+    
 
-    public ModuloDeGestionDeLibrosss(ModuloDeAutenticacion Auten) {
+    public ModuloDeGestionDeLibrosss(ModuloDeAutenticacion Auten, String usuarioActual) {
         
         
         initComponents();
         
         this.Auten = Auten;
+        this.usuarioActual = usuarioActual;
         
         this.setLocationRelativeTo(null);
         refrescarTabla();
@@ -61,8 +65,10 @@ public class ModuloDeGestionDeLibrosss extends javax.swing.JFrame {
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(this::btnModificarActionPerformed);
 
-        btnEliminar.setText("btnEliminar");
+        btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(this::btnEliminarActionPerformed);
+
+        txtBusqueda.addActionListener(this::txtBusquedaActionPerformed);
 
         tablaLibros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -130,7 +136,10 @@ public class ModuloDeGestionDeLibrosss extends javax.swing.JFrame {
             int ej = Integer.parseInt(JOptionPane.showInputDialog("Ejemplares:"));
 
             int res = logica.RegistroDeLibroG(this.Auten, cod, is, ti, au, ge, an, ej);
-            if(res == 0) refrescarTabla();
+            if(res == 0) {
+                Bitacora.registrar("REGISTRO_DE_LIBRO", usuarioActual, "GESTION_DE_LIBROS");
+                refrescarTabla();
+            }
             else JOptionPane.showMessageDialog(null, "Error: Código/ISBN duplicado o cupo lleno.");
         } catch(Exception e) { JOptionPane.showMessageDialog(null, "Error en los datos."); }
     }//GEN-LAST:event_btnNuevoActionPerformed
@@ -143,7 +152,10 @@ public class ModuloDeGestionDeLibrosss extends javax.swing.JFrame {
             String cod = tablaLibros.getValueAt(fila, 0).toString();
             int res = logica.EliminarLibroG(this.Auten, cod);
             
-            if (res == 0) refrescarTabla();
+            if (res == 0) {
+                Bitacora.registrar("ELIMINAR_LIBRO", usuarioActual, "GESTION_DE_LIBROS");
+                refrescarTabla();
+            }
             else if (res > 0) JOptionPane.showMessageDialog(null, "No se puede eliminar: tiene " + res + " préstamos.");
             else JOptionPane.showMessageDialog(null, "Libro no encontrado.");
         }
@@ -165,10 +177,35 @@ public class ModuloDeGestionDeLibrosss extends javax.swing.JFrame {
             int ej = Integer.parseInt(JOptionPane.showInputDialog("Nueva Cantidad:"));
 
             boolean ok = logica.ModificarLibroG(this.Auten, indice, is, ti, au, ge, an, ej);
-            if(ok) refrescarTabla();
+            if(ok) {
+                Bitacora.registrar("MODIFICACION_DE_LIBRO", usuarioActual, "GESTION_DE_LIBROS");
+                refrescarTabla();
+            }
             else JOptionPane.showMessageDialog(null, "Error: No puede haber menos ejemplares que los prestados.");
         }
     }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void txtBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBusquedaActionPerformed
+    String texto = txtBusqueda.getText().trim();
+    
+    if (texto.isEmpty()) {
+        refrescarTabla();
+        return;
+    }
+    
+    // Buscar por título
+    Modelos.Libros[] resultados = logica.FiltrarLibros(Auten, texto, 1);
+    
+    String[] cabecera = {"Codigo", "ISBN", "Titulo", "Autor", "Genero", "Anio", "Disp"};
+    modelo = new DefaultTableModel(null, cabecera);
+    
+    for (Modelos.Libros l : resultados) {
+        Object[] dato = {l.Codigo(), l.ISBN(), l.Titulo(), l.Autor(), 
+                        l.Genero(), l.AñoDePublicacion(), l.Disponible()};
+        modelo.addRow(dato);
+    }
+    tablaLibros.setModel(modelo);
+    }//GEN-LAST:event_txtBusquedaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminar;
