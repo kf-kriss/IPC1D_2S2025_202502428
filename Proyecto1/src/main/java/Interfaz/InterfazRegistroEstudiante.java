@@ -135,7 +135,7 @@ public class InterfazRegistroEstudiante extends javax.swing.JFrame {
         String GuarNom = GNom.getText();
         String GuarCarre = GCarrera.getText();
         
-        Modelos.Usuarios Nuevo = new Modelos.Usuarios("Estudiante", GuarCarne, GuarNom, GuarContra, GuarCarre);
+        Modelos.Usuarios Nuevo = new Modelos.Usuarios("Estudiante", GuarCarne, GuarContra, GuarNom, GuarCarre);
         
         this.Auten.CuentasTotales[Auten.ContadorDeCuentas] = Nuevo;
         this.Auten.ContadorDeCuentas++;

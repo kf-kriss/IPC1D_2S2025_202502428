@@ -6,11 +6,29 @@ package Logica;
 
 
 import Modelos.Usuarios;
+
 import Logica.ModuloDeAutenticacion;
 
 
 public class ModuloDeAdministrador {
 
+    public int RegistroDeOperadorG(Logica.ModuloDeAutenticacion Auten, String u, String p, String n) {
+    
+    for (int i = 0; i < Auten.ContadorDeCuentas; i++) {
+        if (Auten.CuentasTotales[i].getUsuarioo().equals(u)) {
+            return -1; 
+        }
+    }
+    
+    
+    Modelos.Usuarios nuevo = new Modelos.Usuarios("Operador", u, p, n, "N/A");
+    Auten.CuentasTotales[Auten.ContadorDeCuentas] = nuevo;
+    Auten.ContadorDeCuentas++;
+    
+    Auten.EscribirEnCuentastx(nuevo);
+    return 0;
+    }
+    
     
     public boolean EliminacionDeOperador(ModuloDeAutenticacion Auten, String ElimUsu){
         int IndiceEcontrado = -1;

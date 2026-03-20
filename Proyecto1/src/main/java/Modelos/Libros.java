@@ -14,6 +14,7 @@ public class Libros {
     private String Genero;
     private int AñoDePublicacion;
     private int TotalDeEjemplares;
+    private int Disponible;
     
     //Constructor
     public Libros(int Codigo, String ISBN, String Titulo, String Autor, String Genero, int AñoDePublicacion, int TotalDeEjemplares){
@@ -24,6 +25,7 @@ public class Libros {
         this.Genero = Genero;
         this.AñoDePublicacion = AñoDePublicacion;
         this.TotalDeEjemplares = TotalDeEjemplares;
+        this.Disponible = TotalDeEjemplares;
     }
     
     //Getters (leer datos)
@@ -34,6 +36,7 @@ public class Libros {
     public String Genero() { return Genero; }
     public int AñoDePublicacion() { return AñoDePublicacion; }
     public int TotalDeEjemplares() { return TotalDeEjemplares; }
+    public int Disponible() { return Disponible; }
     
     //Setter (modificar datos)
     public void setISBN(String ISBN) { this.ISBN = ISBN; }
@@ -42,5 +45,6 @@ public class Libros {
     public void setGenero(String Genero) { this.Genero = Genero; }
     public void setAñoDePublicacion(int AñoDePublicacion) { this.AñoDePublicacion = AñoDePublicacion; }
     public void setTotalDeEjemplares(int TotalDeEjemplares) { this.TotalDeEjemplares = TotalDeEjemplares; }
+    public void setDisponible(int Disponible) { this.Disponible = Disponible; }
     
 }

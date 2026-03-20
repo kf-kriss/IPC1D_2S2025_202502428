@@ -1,0 +1,15 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Modelos;
+
+public class NodoPrestamo {
+    public Prestamos prestamo; 
+    public NodoPrestamo siguiente; 
+
+    public NodoPrestamo(Prestamos prestamo) {
+        this.prestamo = prestamo;
+        this.siguiente = null;   
+    }
+}

@@ -13,6 +13,7 @@ public class BiblioSystem {
         ModuloDeAutenticacion Atenticacion = new ModuloDeAutenticacion();
         
         Atenticacion.CargarCuentasDesdeCuentastx();
+        Atenticacion.cargarPrestamos();
         
         java.awt.EventQueue.invokeLater(() -> {
             new Interfaz.InterMenuInicial(Atenticacion).setVisible(true);

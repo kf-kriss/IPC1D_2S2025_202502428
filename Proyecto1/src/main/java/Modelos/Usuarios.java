@@ -12,6 +12,8 @@ public class Usuarios {
     private String NombreCompleto;
     private String Carrera;
     
+    public NodoPrestamo historial;
+    
     public Usuarios(String Rol, String Usuarioo, String Contraseña, String NombreCompleto, String Carrera){
         this.Rol = Rol;
         this.Usuarioo = Usuarioo;
@@ -35,4 +37,30 @@ public class Usuarios {
     public String toString(){
         return Rol + ", " + Usuarioo + ", " + Contraseña + ", " + NombreCompleto + ", " + Carrera; 
     }
+    
+    
+public void agregarAlHistorial(Prestamos p) {
+        NodoPrestamo nuevo = new NodoPrestamo(p);
+        if (historial == null) {
+            historial = nuevo;
+        } else {
+            
+            nuevo.siguiente = historial;
+            historial = nuevo;
+        }
+    }
+    
+    
+    public void imprimirHistorial() {
+        NodoPrestamo aux = historial;
+        while (aux != null) {
+            System.out.println(aux.prestamo.toString());
+            aux = aux.siguiente;
+        }
+    } 
+    
+    public NodoPrestamo getHistorial(){
+        return historial;
+    }
+    
 }

@@ -5,6 +5,7 @@
 package InterfazAdmin;
 
 import Logica.ModuloDeAutenticacion;
+import InterfazDeControlDePrestamosDevoluciones.*;
 
 public class MenuAdminn extends javax.swing.JFrame {
     
@@ -20,11 +21,19 @@ public class MenuAdminn extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         RegistarOp = new javax.swing.JButton();
         EliminarOp = new javax.swing.JButton();
         ListadoOp = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        btnDevolver = new javax.swing.JButton();
+        btnListar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        btnGestionEstudiantes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
 
         RegistarOp.setText("Registrar Operador");
         RegistarOp.addActionListener(this::RegistarOpActionPerformed);
@@ -35,6 +44,48 @@ public class MenuAdminn extends javax.swing.JFrame {
         ListadoOp.setText("Listado de Operadores");
         ListadoOp.addActionListener(this::ListadoOpActionPerformed);
 
+        jLabel1.setText("Menú Exclusivo de Admin");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(RegistarOp)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(EliminarOp)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ListadoOp))
+                    .addComponent(jLabel1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(RegistarOp)
+                    .addComponent(EliminarOp)
+                    .addComponent(ListadoOp))
+                .addContainerGap())
+        );
+
+        btnDevolver.setText("Devolver");
+        btnDevolver.addActionListener(this::btnDevolverActionPerformed);
+
+        btnListar.setText("Listado de Préstamos Activos");
+        btnListar.addActionListener(this::btnListarActionPerformed);
+
+        jLabel2.setText("Módulo de Gestión de Estudiantes");
+
+        btnGestionEstudiantes.setText("Ir");
+        btnGestionEstudiantes.addActionListener(this::btnGestionEstudiantesActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -42,25 +93,37 @@ public class MenuAdminn extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(RegistarOp)
-                            .addComponent(EliminarOp)))
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
-                        .addComponent(ListadoOp)))
-                .addContainerGap(150, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(44, 44, 44)
+                                .addComponent(btnDevolver)
+                                .addGap(30, 30, 30)
+                                .addComponent(btnListar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnGestionEstudiantes)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addComponent(RegistarOp)
-                .addGap(18, 18, 18)
-                .addComponent(EliminarOp)
-                .addGap(35, 35, 35)
-                .addComponent(ListadoOp)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDevolver)
+                    .addComponent(btnListar))
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(btnGestionEstudiantes))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
         pack();
@@ -93,9 +156,35 @@ public class MenuAdminn extends javax.swing.JFrame {
         
     }//GEN-LAST:event_EliminarOpActionPerformed
 
+    private void btnDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverActionPerformed
+
+        RegistroDeDevolucion ventana = new RegistroDeDevolucion(Auten);
+        ventana.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnDevolverActionPerformed
+
+    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        
+        ListadoDePrestamosActivos ventana = new ListadoDePrestamosActivos(Auten);
+        ventana.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_btnListarActionPerformed
+
+    private void btnGestionEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionEstudiantesActionPerformed
+        new GestionEstudiantes(Auten).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnGestionEstudiantesActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton EliminarOp;
     private javax.swing.JButton ListadoOp;
     private javax.swing.JButton RegistarOp;
+    private javax.swing.JButton btnDevolver;
+    private javax.swing.JButton btnGestionEstudiantes;
+    private javax.swing.JButton btnListar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

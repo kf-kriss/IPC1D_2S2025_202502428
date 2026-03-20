@@ -5,8 +5,12 @@
 package Interfaz;
 
 import Logica.ModuloDeAutenticacion;
-
 import InterfazAdmin.MenuAdminn;
+import IntefazOperador.MenuOperador;
+
+import Logica.Bitacora;
+
+import javax.swing.JOptionPane;
 
 public class InterfazIniciarSesion extends javax.swing.JFrame {
     
@@ -48,26 +52,23 @@ public class InterfazIniciarSesion extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(IngreUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(152, 152, 152)
                         .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(SeguirAdelante)
-                            .addComponent(jLabel1))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(IngreUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(IngreContra, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))))
                 .addContainerGap(165, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(155, 155, 155))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(IngreContra, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -76,13 +77,13 @@ public class InterfazIniciarSesion extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(IngreUsu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addGap(19, 19, 19)
                 .addComponent(jLabel2)
-                .addGap(32, 32, 32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(IngreContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2)
+                .addGap(61, 61, 61)
                 .addComponent(SeguirAdelante)
                 .addGap(30, 30, 30))
         );
@@ -91,37 +92,36 @@ public class InterfazIniciarSesion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SeguirAdelanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeguirAdelanteActionPerformed
-        String VeUsu = IngreUsu.getText();
-        String VeContra = IngreContra.getText();
-        
-        
-        String QueSoy = Auten.validarIngreso(VeUsu, VeContra);
-        
-        switch (QueSoy) {
+    String VeUsu = IngreUsu.getText();
+    String VeContra = new String(IngreContra.getPassword());
+    
+    String QueSoy = Auten.validarIngreso(VeUsu, VeContra);
+    
+    switch (QueSoy) {
         case "ADMIN":
+            Bitacora.registrar("LOGIN_EXITOSO", VeUsu, "AUTENTICACION");
             
             MenuAdminn VenAdminn = new MenuAdminn(this.Auten);
-            
             VenAdminn.setVisible(true);
-            
             this.dispose();
             break;
         case "OPERADOR":
-            
-            new MenuOperador(this.Auten).setVisible(true);
-            
+            MenuOperador VenOpe = new MenuOperador(this.Auten);
+            VenOpe.setVisible(true);
             this.dispose();
             break;
         case "ESTUDIANTE":
-            
             new MenuEstudiante(this.Auten).setVisible(true);
-            
             this.dispose();
             break;
         default:
+            Bitacora.registrar("LOGIN_FALLIDO", VeUsu, "AUTENTICACION");
             javax.swing.JOptionPane.showMessageDialog(this, "Datos Incorrectos");
+            
+            IngreUsu.setText("");
+            IngreContra.setText("");
             break;
-        }
+    }
     }//GEN-LAST:event_SeguirAdelanteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
