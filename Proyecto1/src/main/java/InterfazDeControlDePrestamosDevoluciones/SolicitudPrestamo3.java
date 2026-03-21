@@ -84,7 +84,6 @@ public class SolicitudPrestamo3 extends javax.swing.JFrame {
             return;
         }
 
-        // Buscar libro
         String isbnEncontrado = null;
         for (int i = 0; i < Auten.ContadorLibros; i++) {
             if (Auten.LibrosTotales[i].ISBN().equals(valor) || 
@@ -99,7 +98,6 @@ public class SolicitudPrestamo3 extends javax.swing.JFrame {
             return;
         }
 
-        // ✅ Crear resultado AQUÍ
         Logica.ModuloPrestamos logica = new Logica.ModuloPrestamos();
         String resultado = logica.solicitarPrestamoEstudiante(Auten, estudianteActual.getUsuarioo(), isbnEncontrado);
 

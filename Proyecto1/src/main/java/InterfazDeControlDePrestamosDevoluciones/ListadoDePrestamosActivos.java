@@ -37,16 +37,15 @@ public class ListadoDePrestamosActivos extends javax.swing.JFrame {
         };
         tablaPrestamos.setModel(modelo);
         
-        // Para colorear las filas vencidas (así parece bien principiante)
         tablaPrestamos.setDefaultRenderer(Object.class, new javax.swing.table.DefaultTableCellRenderer() {
-            @Override
+            
             public java.awt.Component getTableCellRendererComponent(JTable table, Object value,
                     boolean isSelected, boolean hasFocus, int row, int column) {
                 java.awt.Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
                 
                 String estado = table.getValueAt(row, 6).toString();
                 if (estado.equals("VENCIDO")) {
-                    c.setBackground(new Color(255, 200, 200)); // Rojo clarito
+                    c.setBackground(new Color(255, 200, 200));
                 } else {
                     c.setBackground(Color.WHITE);
                 }

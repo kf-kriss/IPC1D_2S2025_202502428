@@ -135,8 +135,7 @@ public class InterMenuInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonSalirActionPerformed
 
     private void BotonRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarseActionPerformed
-        //Registrarse
-        
+
         InterfazRegistroEstudiante VenReg = new InterfazRegistroEstudiante(this.Auten);
         
         VenReg.setVisible(true);

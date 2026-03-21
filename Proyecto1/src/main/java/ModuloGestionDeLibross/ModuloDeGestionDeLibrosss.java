@@ -12,6 +12,8 @@ import Logica.ModuloGestionDeLibros;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 
+import IntefazOperador.MenuOperador;
+
 public class ModuloDeGestionDeLibrosss extends javax.swing.JFrame {
     
 
@@ -56,6 +58,7 @@ public class ModuloDeGestionDeLibrosss extends javax.swing.JFrame {
         txtBusqueda = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaLibros = new javax.swing.JTable();
+        btnRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,6 +86,9 @@ public class ModuloDeGestionDeLibrosss extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaLibros);
 
+        btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(this::btnRegresarActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -105,6 +111,10 @@ public class ModuloDeGestionDeLibrosss extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(19, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnRegresar)
+                .addGap(78, 78, 78))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,7 +127,9 @@ public class ModuloDeGestionDeLibrosss extends javax.swing.JFrame {
                     .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEliminar)
-                .addGap(55, 55, 55)
+                .addGap(5, 5, 5)
+                .addComponent(btnRegresar)
+                .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(57, Short.MAX_VALUE))
         );
@@ -193,7 +205,6 @@ public class ModuloDeGestionDeLibrosss extends javax.swing.JFrame {
         return;
     }
     
-    // Buscar por título
     Modelos.Libros[] resultados = logica.FiltrarLibros(Auten, texto, 1);
     
     String[] cabecera = {"Codigo", "ISBN", "Titulo", "Autor", "Genero", "Anio", "Disp"};
@@ -207,10 +218,18 @@ public class ModuloDeGestionDeLibrosss extends javax.swing.JFrame {
     tablaLibros.setModel(modelo);
     }//GEN-LAST:event_txtBusquedaActionPerformed
 
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        MenuOperador Regresar = new MenuOperador(Auten, usuarioActual);
+        
+        Regresar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnRegresarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevo;
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaLibros;
     private javax.swing.JTextField txtBusqueda;

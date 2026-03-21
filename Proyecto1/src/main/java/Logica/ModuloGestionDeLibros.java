@@ -66,7 +66,6 @@ public class ModuloGestionDeLibros {
         if (encontrado != -1) {
             Libros lib = Auten.LibrosTotales[encontrado];
             
-            //Si tiene prestamo
             if (lib.Disponible() != lib.TotalDeEjemplares()) {
                 return lib.TotalDeEjemplares() - lib.Disponible();
             }

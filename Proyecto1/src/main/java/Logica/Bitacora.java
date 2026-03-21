@@ -29,7 +29,7 @@ public class Bitacora {
             pw.println(linea);
             
         } catch (Exception e) {
-            // Si falla, que no detenga el programa
+            
         }
     }
 }

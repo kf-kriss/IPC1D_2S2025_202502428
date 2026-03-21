@@ -1,2 +1,3 @@
 Operador, Kris, 1012, Kristhoper Ucelo, N/A
 Estudiante, Sando, 1819, Daniel Sandoval, Ing
+Estudiante, 202500002, 0002, Estudiante No2 Ejemplo, Ing
