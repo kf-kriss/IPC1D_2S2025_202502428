@@ -9,7 +9,6 @@ Sistema de gestión bibliotecaria con interfaz gráfica.
 ## Cómo ejecutar
 1. Abrir NetBeans
 2. Ejecutar main/BiblioSystem.java
-3. O usar: java -jar dist/BiblioSystem.jar
 
 ## Credenciales
 - Admin: admin / admin
@@ -17,7 +16,7 @@ Sistema de gestión bibliotecaria con interfaz gráfica.
 - Estudiante: auto-registro
 
 ## Funcionalidades
-- Gestión de libros (CRUD)
+- Gestión de libros 
 - Préstamos y devoluciones
 - Historial de préstamos
 - Reportes HTML
